@@ -8,7 +8,10 @@ from pages.catalog_page import CatalogPage
 from pages.checkout_page import CheckoutPage
 from utils.driver_factory import DriverFactory
 
-BASE_URL = f"file:///{os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'app', 'tienda_demo.html')).replace('\\', '/')}"
+# Se calcula la ruta fuera del f-string para evitar el error de backslash en Python 3.10
+ruta_absoluta = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'app', 'tienda_demo.html'))
+ruta_limpia = ruta_absoluta.replace('\\', '/')
+BASE_URL = f"file:///{ruta_limpia}"
 
 
 class TiendaDemoTestCase(unittest.TestCase):
